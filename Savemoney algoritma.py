@@ -22,7 +22,7 @@ class Keuangan:
             for j in range(n - i - 1):
                 if data[j] > data[j + 1]:
                     data[j], data[j + 1] = data[j + 1], data[j]
-
+                    
     def urutkan_keuangan(self):
         self.bubble_sort(self.data_pemasukan)
         self.bubble_sort(self.data_pengeluaran)
