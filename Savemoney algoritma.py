@@ -62,6 +62,14 @@ class Keuangan:
                 print("Rp.", pengeluaran)
         else:
             print("Tidak ada data pengeluaran.")
+    def view_data(income_list,income_desc_list,expense_list,expense_desc_list):
+        print("Daftar Pemasukan")
+        for i in range(len(income_list)):
+            print(i+1,".",espense_desc_list[i],":",expense_list[i])
+            print("")
+            print("Total")
+            print("Total Pemasukan :"),sumincome)
+            print("Total Pengeluaran:",sumexpend)
 
 
 # Menu
