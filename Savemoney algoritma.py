@@ -15,7 +15,15 @@ class Keuangan:
 
     def tambah_pengeluaran(self, pengeluaran):
         self.data_pengeluaran.append(pengeluaran)
-
+        
+def add_expense(expense_list, expense_desc_list):
+    print("=== PENGELUARAN ===")
+    expense = float(input("Masukkan pengeluaran : Rp."))
+    expense_desc = input("Keterangan : ")
+    expense_list.append(expense)
+    expense_desc_list.append(expense_desc)
+    print("Expense added successfully!")
+    
     def bubble_sort(self, data):
         n = len(data)
         for i in range(n - 1):
