@@ -1,136 +1,118 @@
-class Keuangan:
-    def __init__(self):
-        self.data_pemasukan = []
-        self.data_pengeluaran = []
+def add_income(income_list, income_desc_list):
+    print("============ PEMASUKAN ============")
+    income = int(input("Masukkan pemasukan : Rp."))
+    income_desc = input("Keterangan : ").lower()
+    income_list.append(income)
+    income_desc_list.append(income_desc)
+    print("Pemasukan berhasil ditambahkan!")
+    print("=====================================")
 
-       def tambah_pemasukan(self, pemasukan):
-        self.data_pemasukan.append(pemasukan)
-        def add_income(income_list, income_desc_list):
-            print("=== PEMASUKAN ===")
-            income = float(input("Masukkan pemasukan : Rp."))
-            income_desc = input("Keterangan : ")
-            income_list.append(income)
-            income_desc_list.append(income_desc)
-            print("Income added successfully!")
-
-    def tambah_pengeluaran(self, pengeluaran):
-        self.data_pengeluaran.append(pengeluaran)
-        
 def add_expense(expense_list, expense_desc_list):
-    print("=== PENGELUARAN ===")
-    expense = float(input("Masukkan pengeluaran : Rp."))
-    expense_desc = input("Keterangan : ")
+    print("============ PENGELUARAN ============")
+    expense = int(input("Masukkan pengeluaran : Rp."))
+    expense_desc = input("Keterangan : ").lower()
     expense_list.append(expense)
     expense_desc_list.append(expense_desc)
-    print("Expense added successfully!")
-    
-    def bubble_sort(self, data):
+    print("Pengeluaran berhasil ditambahkan!")
+    print("=====================================")
+
+def bubble_sort(data):
         n = len(data)
         for i in range(n - 1):
             for j in range(n - i - 1):
                 if data[j] > data[j + 1]:
                     data[j], data[j + 1] = data[j + 1], data[j]
-                    
-    def urutkan_keuangan(self):
-        self.bubble_sort(self.data_pemasukan)
-        self.bubble_sort(self.data_pengeluaran)
 
-    def binary_search(self, data, keyword):
-        low = 0
-        high = len(data) - 1
+def sort_view():
+        bubble_sort(income_list)
+        bubble_sort(expense_list)
 
-        while low <= high:
-            mid = (low + high) // 2
-            if data[mid] == keyword:
-                return mid
-            elif data[mid] < keyword:
-                low = mid + 1
-            else:
-                high = mid - 1
+        print("============= SORT DATA =============")
+        print("Data berhasil diurutkan!")
+        print("Pemasukan : ", income_list)
+        print("Pengeluaran : ", expense_list)
+        print("=====================================")
 
+def linear_search(arr, keyword):
+    for i in range(len(arr)):
+        if str(arr[i]) == keyword:
+            return i
+    else:
         return -1
 
-    def cari_pemasukan(self, keyword):
-        return self.binary_search(self.data_pemasukan, keyword)
-
-    def cari_pengeluaran(self, keyword):
-        return self.binary_search(self.data_pengeluaran, keyword)
-
-    def lihat_data(self):
-        print("Data Pemasukan:")
-        if len(self.data_pemasukan) > 0:
-            for pemasukan in self.data_pemasukan:
-                print("Rp.", pemasukan)
+def search():
+    print("============= SEARCH DATA =============")
+    print("Pilihan")
+    print("1. Mencari Pemasukan")
+    print("2. Mencari Pengeluaran")
+    choice = int(input("Masukan pilihan anda : "))
+    if choice == 1:
+        print("Daftar keterangan pemasukan :", income_desc_list)
+        keyword = input("Masukkan kata kunci : ").lower()
+        result = linear_search(income_desc_list, keyword)
+        if result == -1:
+            print("Keyword tidak ditemukan")
         else:
-            print("Tidak ada data pemasukan.")
-
-        print("\nData Pengeluaran:")
-        if len(self.data_pengeluaran) > 0:
-            for pengeluaran in self.data_pengeluaran:
-                print("Rp.", pengeluaran)
+            print("Rp.",income_list[result])
+    elif choice == 2:
+        print("Daftar keterangan penegeluaran : ", expense_desc_list)
+        keyword = input("Masukkan kata kunci : ").lower()
+        result = linear_search(expense_desc_list, keyword)
+        if result == -1:
+            print("Keyword tidak ditemukan")
         else:
-            print("Tidak ada data pengeluaran.")
-    def view_data(income_list,income_desc_list,expense_list,expense_desc_list):
-        print("Daftar Pemasukan")
-        for i in range(len(income_list)):
-            print(i+1,".",espense_desc_list[i],":",expense_list[i])
-            print("")
-            print("Total")
-            print("Total Pemasukan :"),sumincome)
-            print("Total Pengeluaran:",sumexpend)
+            print("Rp.",expense_list[result])
 
 
-# Menu
-keuangan = Keuangan()
+def view_data(income_list, income_desc_list, expense_list, expense_desc_list):
+    print("====================== VIEW DATA ============================")
+    print("Data berhasil Ditampilkan!")
+    print("Daftar Pemasukan : ")
+    sumIncome = sum(income_list)
+    sumExpend = sum(expense_list)
+    for i in range(len(income_list)):
+        print(i+1,".", income_desc_list[i], ": Rp.", income_list[i])
+    print("Daftar Pengeluaran : ")
+    for i in range(len(expense_list)):
+        print(i+1,".", expense_desc_list[i], ": Rp.", expense_list[i])
+
+    print("")
+    print("===========================================================")
+    print("Total")
+    print("Total Pemasukan : Rp.",sumIncome)
+    print("Total pengeluaran : Rp.",sumExpend)
+    print("===========================================================")
+
+
+income_list = []
+income_desc_list = []
+expense_list = []
+expense_desc_list = []
+
 
 while True:
     print("")
-    print("=== Aplikasi Pencatat Keuangan ===")
-    print("1. Tambah Pemasukan")
-    print("2. Tambah Pengeluaran")
-    print("3. Urutkan Keuangan")
-    print("4. Cari Data Pemasukan")
-    print("5. Cari Data Pengeluaran")
-    print("6. Lihat Data")
-    print("0. Keluar")
-    pilihan = input("Masukkan pilihan: ")
+    print("=== APLIKASI PENCATAT KEUANGAN ===")
+    print("1. Menambahkan Pemasukan")
+    print("2. Menambahkan Pengeluaran")
+    print("3. Mengurutkan Data")
+    print("4. Mencari Data")
+    print("5. Melihat Data")
+    print("6. Keluar aplikasi")
+    choice = int(input("Masukan pilihan : "))
+    print("")
 
-    if pilihan == "1":
-        pemasukan = input("Masukkan pemasukan : ")
-        keuangan.tambah_pemasukan(pemasukan)
-        print("Pemasukan berhasil ditambahkan.")
-
-    elif pilihan == "2":
-        pengeluaran = input("Masukkan pengeluaran : ")
-        keuangan.tambah_pengeluaran(pengeluaran)
-        print("Pengeluaran berhasil ditambahkan.")
-
-    elif pilihan == "3":
-        keuangan.urutkan_keuangan()
-        print("Keuangan berhasil diurutkan.")
-
-    elif pilihan == "4":
-        keyword = input("Masukkan kata kunci: ")
-        index = keuangan.cari_pemasukan(keyword)
-        if index != -1:
-            print("Data pemasukan ditemukan pada indeks:", index)
-        else:
-            print("Data pemasukan tidak ditemukan.")
-
-    elif pilihan == "5":
-        keyword = input("Masukkan kata kunci: ")
-        index = keuangan.cari_pengeluaran(keyword)
-        if index != -1:
-            print("Data pengeluaran ditemukan pada indeks:", index)
-        else:
-            print("Data pengeluaran tidak ditemukan.")
-
-    elif pilihan == "6":
-        keuangan.lihat_data()
-
-    elif pilihan == "0":
-        print("Terima kasih telah menggunakan aplikasi pencatat keuangan.")
+    if choice == 1:
+        add_income(income_list, income_desc_list)
+    elif choice == 2:
+        add_expense(expense_list, expense_desc_list)
+    elif choice == 3:
+        sort_view()
+    elif choice == 4:
+        search()
+    elif choice == 5:
+        view_data(income_list, income_desc_list, expense_list, expense_desc_list)
+    elif choice == 6:
         break
-
     else:
-        print("Pilihan tidak valid. Silakan coba lagi.")
+        print("Pilihan tidak tersedia, silahkan pilih pilihan lainnya")
