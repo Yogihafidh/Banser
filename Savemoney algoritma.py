@@ -48,20 +48,28 @@ def search():
     choice = int(input("Masukan pilihan anda : "))
     if choice == 1:
         print("Daftar keterangan pemasukan :", income_desc_list)
-        keyword = input("Masukkan kata kunci : ").lower()
+        keyword = input("Masukkan kata kunci sesuai data diatas : ").lower()
         result = linear_search(income_desc_list, keyword)
         if result == -1:
+            print("-----------------------------------------------------")
             print("Keyword tidak ditemukan")
+            print("-----------------------------------------------------")
         else:
-            print("Rp.",income_list[result])
+            print("-----------------------------------------------------")
+            print("Pemasukan", keyword, "sebesar", "Rp.",income_list[result])
+            print("-----------------------------------------------------")
     elif choice == 2:
         print("Daftar keterangan penegeluaran : ", expense_desc_list)
-        keyword = input("Masukkan kata kunci : ").lower()
+        keyword = input("Masukkan kata kunci sesuai data diatas : ").lower()
         result = linear_search(expense_desc_list, keyword)
         if result == -1:
+            print("-----------------------------------------------------")
             print("Keyword tidak ditemukan")
+            print("-----------------------------------------------------")
         else:
-            print("Rp.",expense_list[result])
+            print("-----------------------------------------------------")
+            print("Pengeluaran", keyword, "sebesar : ", "Rp.",expense_list[result])
+            print("-----------------------------------------------------")
 
 
 def view_data(income_list, income_desc_list, expense_list, expense_desc_list):
