@@ -78,6 +78,8 @@ def view_data(income_list, income_desc_list, expense_list, expense_desc_list):
     print("Daftar Pemasukan : ")
     sumIncome = sum(income_list)
     sumExpend = sum(expense_list)
+    saldo = sumIncome - sumExpend
+
     for i in range(len(income_list)):
         print(i+1,".", income_desc_list[i], ": Rp.", income_list[i])
     print("Daftar Pengeluaran : ")
@@ -85,12 +87,13 @@ def view_data(income_list, income_desc_list, expense_list, expense_desc_list):
         print(i+1,".", expense_desc_list[i], ": Rp.", expense_list[i])
 
     print("")
-    print("===========================================================")
+    print("-----------------------------------------------------------")
     print("Total")
     print("Total Pemasukan : Rp.",sumIncome)
     print("Total pengeluaran : Rp.",sumExpend)
+    print("Saldo : Rp.", saldo)
     print("===========================================================")
-
+    
 
 income_list = []
 income_desc_list = []
