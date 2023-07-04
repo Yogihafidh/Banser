@@ -1,3 +1,4 @@
+
 def add_income(income_list, income_desc_list):
     print("============ PEMASUKAN ============")
     income = int(input("Masukkan pemasukan : Rp."))
@@ -76,9 +77,9 @@ def view_data(income_list, income_desc_list, expense_list, expense_desc_list):
     print("====================== VIEW DATA ============================")
     print("Data berhasil Ditampilkan!")
     print("Daftar Pemasukan : ")
-    sumIncome = sum(income_list)
-    sumExpend = sum(expense_list)
-    saldo = sumIncome - sumExpend
+    sum_income = sum(income_list)
+    sum_expend = sum(expense_list)
+    saldo = sum_income - sum_expend
 
     for i in range(len(income_list)):
         print(i+1,".", income_desc_list[i], ": Rp.", income_list[i])
@@ -89,11 +90,11 @@ def view_data(income_list, income_desc_list, expense_list, expense_desc_list):
     print("")
     print("-----------------------------------------------------------")
     print("Total")
-    print("Total Pemasukan : Rp.",sumIncome)
-    print("Total pengeluaran : Rp.",sumExpend)
+    print("Total Pemasukan : Rp.",sum_income)
+    print("Total pengeluaran : Rp.",sum_expend)
     print("Saldo : Rp.", saldo)
     print("===========================================================")
-    
+
 
 income_list = []
 income_desc_list = []
